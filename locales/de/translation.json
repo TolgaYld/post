@@ -1,0 +1,12 @@
+{
+    "post-not-created": "Beitrag konnte nicht erstellt werden",
+    "posts-not-found": "Beiträge wurden nicht gefunden",
+    "post-not-found": "Beitrag wurde nicht gefunden",
+    "post-update-failed": "Update fehlgeschlagen",
+    "user-password-update-failed": "Passwort update fehlgeschlagen",
+    "email-in-use": "E-Mail ist schon vergeben",
+    "authentication-failed": "E-Mail oder Passwort ist falsch",
+    "user-is-banned": "User wurde gebannt. Schreibe eine E-Mail für weitere Informationen",
+    "post-delete-failed": "Post konnte nicht gelöscht werden",
+    "unauthorized": "Unautorisierter Zugriff"
+}

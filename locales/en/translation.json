@@ -1,0 +1,12 @@
+{
+    "post-not-created": "Post could not created",
+    "posts-not-found": "Posts not found",
+    "post-not-found": "Post not found",
+    "post-update-failed": "Update failed",
+    "user-password-update-failed": "Update password failed",
+    "email-in-use": "E-Mail is already in use",
+    "authentication-failed": "Wrong e-mail or password",
+    "user-is-banned": "User has been banned. Write an email for more information",
+    "post-delete-failed": "Couldn't delete post",
+    "unauthorized": "Unauthorized access"
+}
