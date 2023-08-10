@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 let SchemaTypes = Schema.Types;
-const validator = require("validator");
 
 const PostSchema = new Schema(
   {
@@ -36,6 +35,11 @@ const PostSchema = new Schema(
   },
   { collection: "Posts", timestamps: true },
 );
+
+PostSchema.pre("deleteMany", function (next) {
+  let post = this;
+  post.model("Assignment").deleteOne({ post: post._id }, next);
+});
 
 const Post = mongoose.model("Post", PostSchema);
 

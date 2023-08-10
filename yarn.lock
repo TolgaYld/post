@@ -1763,10 +1763,10 @@ i18next-http-middleware@^3.3.2:
   resolved "https://registry.yarnpkg.com/i18next-http-middleware/-/i18next-http-middleware-3.3.2.tgz#6a24fee6bde44952a5af24364d43fa32f6c1b9b6"
   integrity sha512-PSeLXQXr9Qiv9Q3GCWCoIJenKVbxCcVsXb7VMp/mOprV4gu+AMJT7VHw4+QEf6oYW6GU31QSLnfDpLNoSMtx3g==
 
-i18next@^23.4.2:
-  version "23.4.2"
-  resolved "https://registry.yarnpkg.com/i18next/-/i18next-23.4.2.tgz#e68108be82287114e027afc5402bb7830d7f45c9"
-  integrity sha512-hkVPHKFLtn9iewdqHDiU+MGVIBk+bVFn5usw7CIeCn/SBcVKGTItGdjNPm2B8Lnz42CeHUlnSOTgsr5vbITjhA==
+i18next@^23.4.4:
+  version "23.4.4"
+  resolved "https://registry.yarnpkg.com/i18next/-/i18next-23.4.4.tgz#ec8fb2b5f3c5d8e3bf3f8ab1b19e743be91300e0"
+  integrity sha512-+c9B0txp/x1m5zn+QlwHaCS9vyFtmIAEXbVSFzwCX7vupm5V7va8F9cJGNJZ46X9ZtoGzhIiRC7eTIIh93TxPA==
   dependencies:
     "@babel/runtime" "^7.22.5"
 
@@ -2151,10 +2151,10 @@ lru-cache@^6.0.0:
   dependencies:
     yallist "^4.0.0"
 
-luxon@^3.3.0:
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/luxon/-/luxon-3.3.0.tgz#d73ab5b5d2b49a461c47cedbc7e73309b4805b48"
-  integrity sha512-An0UCfG/rSiqtAIiBPO0Y9/zAnHUZxAMiCpTd5h2smgsj7GGmcenvrvww2cqNA8/4A5ZrD1gJpHN2mIHZQF+Mg==
+luxon@^3.4.0:
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/luxon/-/luxon-3.4.0.tgz#17cb754efecbf76994f05b2a3f1f91fad7ddfde7"
+  integrity sha512-7eDo4Pt7aGhoCheGFIuq4Xa2fJm4ZpmldpGhjTYBNUYNCN6TIEP6v7chwwwt3KRp7YR+rghbfvjyo3V5y9hgBw==
 
 make-dir@^3.0.0, make-dir@^3.0.2:
   version "3.1.0"
