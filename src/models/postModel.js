@@ -29,17 +29,17 @@ const PostSchema = new Schema(
         ref: "Comments",
       },
     ],
+    user: {
+      type: SchemaTypes.ObjectId,
+      ref: "User",
+    },
+
     last_update_from_user_id: {
-      type: SchemaTypes.UUID,
+      type: SchemaTypes.ObjectId,
     },
   },
   { collection: "Posts", timestamps: true },
 );
-
-PostSchema.pre("deleteMany", function (next) {
-  let post = this;
-  post.model("Assignment").deleteOne({ post: post._id }, next);
-});
 
 const Post = mongoose.model("Post", PostSchema);
 

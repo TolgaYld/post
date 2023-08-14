@@ -1,12 +1,7 @@
 const Post = require("../models/postModel");
 const User = require("../models/userModel");
 const errorHandler = require("../errors/errorHandler");
-const pushToQ = require("../queue/pushToQueueHandler");
-const { log } = require("../modules/logModule");
-
-const saltValue = 12;
-const tokenDuration = "3h";
-const refreshTokenDuration = "30d";
+// const pushToQ = require("../queue/pushToQueueHandler");
 
 const findAll = async (request, reply) => {
   try {
@@ -15,7 +10,6 @@ const findAll = async (request, reply) => {
       return await errorHandler(401, "unauthorized", true, request, reply);
     } else {
       const findUser = await User.findById(id).exec();
-
       if (!findUser) {
         return await errorHandler(401, "unauthorized", true, request, reply);
       } else {
@@ -77,6 +71,7 @@ const findOne = async (request, reply) => {
 const createPost = async (request, reply) => {
   try {
     const userId = request.headers.authorization;
+
     if (userId == null) {
       return await errorHandler(401, "unauthorized", true, request, reply);
     } else {
@@ -85,7 +80,8 @@ const createPost = async (request, reply) => {
         return await errorHandler(401, "unauthorized", true, request, reply);
       } else {
         const createdPost = await Post.create({
-          ...request.body,
+          ...request.body.data,
+          user: findUser,
         });
 
         if (!createdPost) {
@@ -130,9 +126,13 @@ const updatePost = async (request, reply) => {
             reply,
           );
         } else {
-          const updatedPost = await findPost.update({
-            ...request.body,
-          });
+          const updatedPost = await Post.findByIdAndUpdate(
+            findPost._id,
+            {
+              ...request.body,
+            },
+            { new: true },
+          );
 
           if (!updatedPost) {
             return await errorHandler(
@@ -179,7 +179,7 @@ const deletePost = async (request, reply) => {
             reply,
           );
         } else {
-          const deletedPost = await findPost.deleteOne();
+          const deletedPost = await Post.findByIdAndDelete(id);
 
           if (!deletedPost) {
             return await errorHandler(
