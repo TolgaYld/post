@@ -1,6 +1,7 @@
 const postController = require("../controllers/postController");
 module.exports = function (fastify, opts, done) {
   fastify.get("/findAll", postController.findAll);
+  fastify.get("/findAllPostsFromUser/:id", postController.findAllPostsFromUser);
   fastify.get("/find/:id", postController.findOne);
   fastify.post("/create", postController.createPost);
   fastify.patch("/update/:id", postController.updatePost);

@@ -34,7 +34,7 @@ const PostSchema = new Schema(
       ref: "User",
     },
 
-    last_update_from_user_id: {
+    last_update_from_user: {
       type: SchemaTypes.ObjectId,
     },
   },

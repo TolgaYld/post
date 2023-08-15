@@ -11,7 +11,7 @@ chai.use(sinonChai);
 
 let fastify = require("../../src/app");
 let sandbox = sinon.createSandbox();
-const User = require("../../src/models/postModel");
+const Post = require("../../src/models/postModel");
 
 before((done) => {
   fastify.ready();
@@ -20,24 +20,24 @@ before((done) => {
 });
 
 beforeEach((done) => {
-  User.deleteMany();
+  Post.deleteMany();
   done();
 });
 
 afterEach((done) => {
-  User.deleteMany();
+  Post.deleteMany();
   sandbox.restore();
   done();
 });
 
 describe("auth", () => {
-  let sampleUser;
+  let samplePost;
   let sampleArgs;
   let findStub;
 
   context("GET /api/v1.0/findAll", function () {
     this.timeout(9000);
-    it("Get all Users", (done) => {
+    it("Get all Posts", (done) => {
       request(fastify.server)
         .get("/api/v1.0/findAll")
         .end((err, response) => {

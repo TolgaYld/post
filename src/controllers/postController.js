@@ -68,6 +68,39 @@ const findOne = async (request, reply) => {
   }
 };
 
+const findAllPostsFromUser = async (request, reply) => {
+  try {
+    const userId = request.headers.authorization;
+    if (userId == null) {
+      return await errorHandler(401, "unauthorized", true, request, reply);
+    } else {
+      const findUser = await User.findById(userId).exec();
+      if (!findUser) {
+        return await errorHandler(401, "unauthorized", true, request, reply);
+      } else {
+        const { id } = request.params;
+        const findAllPosts = await Post.find({user: id}).exec();
+
+        if (!findAllPosts) {
+          return await errorHandler(
+            404,
+            "post-not-found",
+            true,
+            request,
+            reply,
+          );
+        }
+        await reply.code(200).send({
+          success: true,
+          data: findAllPosts,
+        });
+      }
+    }
+  } catch (error) {
+    return await errorHandler(404, error, false, request, reply);
+  }
+};
+
 const createPost = async (request, reply) => {
   try {
     const userId = request.headers.authorization;
@@ -206,6 +239,7 @@ const deletePost = async (request, reply) => {
 module.exports = {
   findAll,
   findOne,
+  findAllPostsFromUser,
   createPost,
   updatePost,
   deletePost,
