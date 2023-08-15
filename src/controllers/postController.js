@@ -22,12 +22,12 @@ const findAll = async (request, reply) => {
             request,
             reply,
           );
+        } else {
+          await reply.code(200).send({
+            success: true,
+            data: findAllPosts,
+          });
         }
-
-        await reply.code(200).send({
-          success: true,
-          data: findAllPosts,
-        });
       }
     }
   } catch (error) {
@@ -56,11 +56,12 @@ const findOne = async (request, reply) => {
             request,
             reply,
           );
+        } else {
+          await reply.code(200).send({
+            success: true,
+            data: findOnePost,
+          });
         }
-        await reply.code(200).send({
-          success: true,
-          data: findOnePost,
-        });
       }
     }
   } catch (error) {
@@ -79,7 +80,7 @@ const findAllPostsFromUser = async (request, reply) => {
         return await errorHandler(401, "unauthorized", true, request, reply);
       } else {
         const { id } = request.params;
-        const findAllPosts = await Post.find({user: id}).exec();
+        const findAllPosts = await Post.find({ user: id }).exec();
 
         if (!findAllPosts) {
           return await errorHandler(
@@ -89,11 +90,12 @@ const findAllPostsFromUser = async (request, reply) => {
             request,
             reply,
           );
+        } else {
+          await reply.code(200).send({
+            success: true,
+            data: findAllPosts,
+          });
         }
-        await reply.code(200).send({
-          success: true,
-          data: findAllPosts,
-        });
       }
     }
   } catch (error) {
@@ -223,11 +225,12 @@ const deletePost = async (request, reply) => {
               request,
               reply,
             );
+          } else {
+            await reply.code(200).send({
+              success: true,
+              data: findPost,
+            });
           }
-          await reply.code(200).send({
-            success: true,
-            data: findPost,
-          });
         }
       }
     }
