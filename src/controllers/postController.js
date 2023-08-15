@@ -46,9 +46,9 @@ const findOne = async (request, reply) => {
         return await errorHandler(401, "unauthorized", true, request, reply);
       } else {
         const { id } = request.params;
-        const fındOnePost = await Post.findById(id).exec();
+        const findOnePost = await Post.findById(id).exec();
 
-        if (!fındOnePost) {
+        if (!findOnePost) {
           return await errorHandler(
             404,
             "post-not-found",
@@ -59,7 +59,7 @@ const findOne = async (request, reply) => {
         }
         await reply.code(200).send({
           success: true,
-          data: fındOnePost,
+          data: findOnePost,
         });
       }
     }
@@ -92,11 +92,12 @@ const createPost = async (request, reply) => {
             request,
             reply,
           );
+        } else {
+          await reply.code(201).send({
+            success: true,
+            data: createdPost,
+          });
         }
-        await reply.code(201).send({
-          success: true,
-          data: createdPost,
-        });
       }
     }
   } catch (error) {
@@ -132,7 +133,7 @@ const updatePost = async (request, reply) => {
               ...request.body,
             },
             { new: true },
-          );
+          ).exec();
 
           if (!updatedPost) {
             return await errorHandler(
@@ -179,7 +180,7 @@ const deletePost = async (request, reply) => {
             reply,
           );
         } else {
-          const deletedPost = await Post.findByIdAndDelete(id);
+          const deletedPost = await Post.findByIdAndDelete(id).exec();
 
           if (!deletedPost) {
             return await errorHandler(
@@ -192,7 +193,7 @@ const deletePost = async (request, reply) => {
           }
           await reply.code(200).send({
             success: true,
-            data: findUser,
+            data: findPost,
           });
         }
       }

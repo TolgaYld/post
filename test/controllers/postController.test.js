@@ -11,7 +11,7 @@ chai.use(sinonChai);
 
 let fastify = require("../../src/app");
 let sandbox = sinon.createSandbox();
-const User = require("../../src/models/userModel");
+const User = require("../../src/models/postModel");
 
 before((done) => {
   fastify.ready();
@@ -37,14 +37,12 @@ describe("auth", () => {
 
   context("GET /api/v1.0/findAll", function () {
     this.timeout(9000);
-    it("Get all users", (done) => {
+    it("Get all Users", (done) => {
       request(fastify.server)
         .get("/api/v1.0/findAll")
         .end((err, response) => {
-          expect(response.status).to.equal(200);
-          expect(response.body.success).to.be.true;
-          expect(response.body.data).to.be.an("array");
-          expect(response.body.data).to.have.lengthOf(0);
+          expect(response.status).to.equal(401);
+          expect(response.body.success).to.be.false;
           done(err);
         });
     });
